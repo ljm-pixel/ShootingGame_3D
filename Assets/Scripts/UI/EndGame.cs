@@ -15,13 +15,12 @@ public class EndGame : BasePanel<EndGame>
         {
             HideMe();
             //加载下一场景
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(1);
         });
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        OpenMouse();
     }
 }

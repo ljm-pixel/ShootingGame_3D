@@ -40,9 +40,8 @@ public class WeaponSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //weapons = new List<GameObject>();
-        //SpawnWeaponPrefabs(0);
-        //SpawnWeaponPrefabs(1);
+        if(weapons[0] != null)
+            weapons[0].SetActive(true);
     }
 
     // Update is called once per frame
