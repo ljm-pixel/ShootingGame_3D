@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 910390049118421393}
   - component: {fileID: 2020773123441798257}
   - component: {fileID: 6407185765795502533}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthProp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,6 +68,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e873cbc7c65c12b409ffa8b357ef3039, type: 3}
       propertyPath: m_Name
       value: Potion_Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e873cbc7c65c12b409ffa8b357ef3039, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e873cbc7c65c12b409ffa8b357ef3039, type: 3}
       propertyPath: m_RootOrder

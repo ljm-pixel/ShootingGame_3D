@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6221604164052841173}
   - component: {fileID: 40399257598698732}
   - component: {fileID: 23536972269634103}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AddShotgunBulletNumProp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,6 +69,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e873cbc7c65c12b409ffa8b357ef3039, type: 3}
       propertyPath: m_Name
       value: Potion_Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e873cbc7c65c12b409ffa8b357ef3039, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e873cbc7c65c12b409ffa8b357ef3039, type: 3}
       propertyPath: m_RootOrder

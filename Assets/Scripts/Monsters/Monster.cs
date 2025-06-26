@@ -100,7 +100,7 @@ public class Monster : MonoBehaviour
         animator.SetTrigger("TakeDamage");
         if (currentHealth <= 0)
         {
-            if(Random.Range(0, 100) < 25)
+            if(Random.Range(0, 100) < 50)
                 PropSpawner.Instance.SpawnerPropPrefabs(transform);
             gameObject.GetComponent<Collider>().enabled = false;
             animator.SetTrigger("Die");

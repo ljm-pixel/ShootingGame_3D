@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    protected float speed = 20;
-    protected float damage = 1; //伤害
+    protected float speed = 30f;
+    protected float damage = 1f; 
+
     public GameObject explosionPrefab;
     new Rigidbody rigidbody;
-
     private float time = 5f;
 
     void Awake()
@@ -24,8 +24,8 @@ public class Bullet : MonoBehaviour
     protected virtual void OnEnable()
     {
         time = 5f;
-        speed = 10f + GameData.Instance.player.AttackSpeed;
-        damage = GameData.Instance.player.Attack * 0.3f;
+        //speed = 10f + GameData.Instance.player.AttackSpeed;
+        damage = GameData.Instance.player.Attack * 0.4f;
     }
 
     void Update()
@@ -40,8 +40,11 @@ public class Bullet : MonoBehaviour
     {
         // Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         GameObject exp = ObjectPool.Instance.GetObject(explosionPrefab);// 爆炸
-        exp.transform.position = transform.position;
-        exp.transform.parent = other.transform;
+        if (exp != null)
+        {
+            exp.transform.position = transform.position;
+            exp.transform.parent = other.transform;
+        }
 
         if (other.CompareTag("Monster"))
         {

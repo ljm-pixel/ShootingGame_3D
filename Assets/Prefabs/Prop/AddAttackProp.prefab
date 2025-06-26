@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8937591193473775531}
   - component: {fileID: 3965615488508494328}
   - component: {fileID: 8284284799772127950}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AddAttackProp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,6 +79,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e873cbc7c65c12b409ffa8b357ef3039, type: 3}
       propertyPath: m_Name
       value: Potion_Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e873cbc7c65c12b409ffa8b357ef3039, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e873cbc7c65c12b409ffa8b357ef3039, type: 3}
       propertyPath: m_RootOrder

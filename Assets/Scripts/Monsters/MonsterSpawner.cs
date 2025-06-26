@@ -59,10 +59,14 @@ public class MonsterSpawner : MonoBehaviour
             // 生成怪物
             GameObject monster = ObjectPool.Instance.GetObject(monsterPrefab[monsterIndex]);
             //print("生成+");
-            monster.transform.position = spawnPos;
-            monster.transform.rotation = Quaternion.identity;
-            //Instantiate(monsterPrefab, spawnPos, Quaternion.identity);
-            monster.transform.parent = this.transform;
+            if(monster != null)
+            {
+                monster.transform.position = spawnPos;
+                monster.transform.rotation = Quaternion.identity;
+                //Instantiate(monsterPrefab, spawnPos, Quaternion.identity);
+                monster.transform.parent = this.transform;
+            }
+            
             SoundManager.Instance.Play3DSound(0, spawnPos, 0.7f);
             // 等待间隔时间
             yield return new WaitForSeconds(spawnInterval);

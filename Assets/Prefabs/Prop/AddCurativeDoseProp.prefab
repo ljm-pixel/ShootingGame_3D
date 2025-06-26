@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2336431402429936837}
   - component: {fileID: 4285926830331722006}
   - component: {fileID: 5478313730922374661}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AddCurativeDoseProp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,6 +69,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c6179e854b44e2541a9956947c806de0, type: 3}
       propertyPath: m_Name
       value: Potion_Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6179e854b44e2541a9956947c806de0, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6179e854b44e2541a9956947c806de0, type: 3}
       propertyPath: m_RootOrder
