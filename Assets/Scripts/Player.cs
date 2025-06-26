@@ -89,8 +89,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //currentHealth = currentHealth;
-        //guns[0].SetActive(true);
+        GameUI.Instance.SetCurrentHealthText(currentHealth);
+        GameUI.Instance.SetAttackText(attack);
+        GameUI.Instance.SetAttackSpeedText(attackSpeed);
+        GameUI.Instance.SetBulletNumText(numBullet);
     }
 
     public void TakeDamage(float damage)
@@ -109,6 +111,11 @@ public class Player : MonoBehaviour
             ExplodeProp explodeProp = new ExplodeProp();
             explodeProp.TriggerEffect();
         }
+    }
+
+    public void SetbeInjuredIntervalTime()
+    {
+        beInjuredIntervalTime = 0.2f;
     }
 
     // Update is called once per frame

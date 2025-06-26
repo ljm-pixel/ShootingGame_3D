@@ -20,6 +20,7 @@ public class MonsATK : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameData.Instance.player.TakeDamage(Damage);
+            other.gameObject.GetComponent<Player>().SetbeInjuredIntervalTime();
             this.gameObject.SetActive(false);
         }
     }

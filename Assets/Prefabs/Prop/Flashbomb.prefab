@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3146797900613886228}
   - component: {fileID: 3146797900613886225}
   - component: {fileID: 3146797900613886224}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flashbomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 3146797900766106126}
   - component: {fileID: 3146797900766106121}
   - component: {fileID: 3146797900766106120}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: FlashbombPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 3146797900885456871}
   - component: {fileID: 3146797900885456870}
   - component: {fileID: 3146797900885456865}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,6 +263,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c6179e854b44e2541a9956947c806de0, type: 3}
       propertyPath: m_Name
       value: Potion_Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6179e854b44e2541a9956947c806de0, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6179e854b44e2541a9956947c806de0, type: 3}
       propertyPath: m_RootOrder
