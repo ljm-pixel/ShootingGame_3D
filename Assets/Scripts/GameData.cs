@@ -20,7 +20,9 @@ using UnityEngine;
 
 //时间：每层加10秒
 
-public class GameData : MonoBehaviour 
+//音效数据
+
+public class GameData : MonoBehaviour
 {
     private static GameData instance = new GameData();
     public static GameData Instance => instance;
@@ -56,8 +58,4 @@ public class GameData : MonoBehaviour
         instance = this;
         player = Player.GetComponent<Player>();
     }
-    //private GameData()
-    //{
-    //    player = Player.GetComponent<Player>();
-    //}
 }
