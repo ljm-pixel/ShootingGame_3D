@@ -6,8 +6,8 @@ public class Egglet : Monster
 {
     protected override void Initialize()
     {
-        maxHealth = GameData.Instance.MonsterHealth * 3f;
-        damage = GameData.Instance.MonsterAttack;
-        speed = GameData.Instance.MonsterSpeed * 1.5f;
+        speed = GameData.Instance.monsterData.dataDic[1].speed;
+        damage = GameData.Instance.monsterData.dataDic[1].attack;
+        maxHealth = GameData.Instance.monsterData.dataDic[1].health;
     }
 }

@@ -36,8 +36,7 @@ public class ObjectPool
             _object.transform.SetParent(childPool.transform);
         }
         _object = objectPool[prefab.name].Dequeue();
-        if(_object != null)
-            _object.SetActive(true);
+        _object.SetActive(true);
         return _object;
     }
 
@@ -48,5 +47,10 @@ public class ObjectPool
             objectPool.Add(_name, new Queue<GameObject>());
         objectPool[_name].Enqueue(prefab);
         prefab.SetActive(false);
+    }
+    
+    public void Clear()
+    {
+        objectPool.Clear();
     }
 }

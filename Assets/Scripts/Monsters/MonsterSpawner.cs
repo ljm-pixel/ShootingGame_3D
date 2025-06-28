@@ -64,7 +64,7 @@ public class MonsterSpawner : MonoBehaviour
                 monster.transform.position = spawnPos;
                 monster.transform.rotation = Quaternion.identity;
                 //Instantiate(monsterPrefab, spawnPos, Quaternion.identity);
-                monster.transform.parent = this.transform;
+                // monster.transform.parent = this.transform;
             }
             
             SoundManager.Instance.Play3DSound(0, spawnPos, 0.7f);

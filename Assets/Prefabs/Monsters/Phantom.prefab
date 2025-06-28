@@ -758,9 +758,9 @@ GameObject:
   - component: {fileID: 2640623775558215295}
   - component: {fileID: 7441571793989867225}
   - component: {fileID: 369441773103521032}
-  - component: {fileID: 1890038775575669248}
+  - component: {fileID: 6038605299225380125}
   m_Layer: 8
-  m_Name: Monster
+  m_Name: Phantom
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,7 +840,7 @@ CapsuleCollider:
   m_Height: 2.58
   m_Direction: 1
   m_Center: {x: 0, y: 1.31, z: 0}
---- !u!114 &1890038775575669248
+--- !u!114 &6038605299225380125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -849,7 +849,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2640623775548724671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82292194c0653a54c825e7780756947f, type: 3}
+  m_Script: {fileID: 11500000, guid: a05f2e7bece68b24a9aba93091685036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minHealthPos: {fileID: 2970943410551685902}

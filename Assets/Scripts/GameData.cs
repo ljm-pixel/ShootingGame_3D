@@ -53,9 +53,24 @@ public class GameData : MonoBehaviour
         set { monsterSpeed = value; }
     }
 
+
+    public PlayerInfoContainer playerData;
+    public MonsterInfoContainer monsterData;
+    public WeaponInfoContainer weaponData;
+    public PropInfoContainer propData;
+    public IteratValueInfoContainer iteratData;
+
     void Awake()
     {
         instance = this;
+
+        //获取Excel表数据
+        playerData = BinaryDataMgr.Instance.GetTable<PlayerInfoContainer>();
+        monsterData = BinaryDataMgr.Instance.GetTable<MonsterInfoContainer>();
+        weaponData = BinaryDataMgr.Instance.GetTable<WeaponInfoContainer>();
+        propData = BinaryDataMgr.Instance.GetTable<PropInfoContainer>();
+        iteratData = BinaryDataMgr.Instance.GetTable<IteratValueInfoContainer>();
+
         player = Player.GetComponent<Player>();
     }
 }

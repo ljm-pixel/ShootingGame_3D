@@ -2,14 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-/// <summary>
-/// 知识点
-/// 1.AB包相关的API
-/// 2.单例模式
-/// 3.委托——>Lambda表达式
-/// 4.协程
-/// 5.字典
-/// </summary>
+
 public class ABMgr : SingletonAutoMono<ABMgr>
 {
     //AB包管理器 目的是

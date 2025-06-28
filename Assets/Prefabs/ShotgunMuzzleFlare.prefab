@@ -14301,6 +14301,7 @@ GameObject:
   - component: {fileID: 3745856855932777128}
   - component: {fileID: 3712767593184428410}
   - component: {fileID: 3517716145355667446}
+  - component: {fileID: 1191978311675222174}
   m_Layer: 9
   m_Name: ShotgunMuzzleFlare
   m_TagString: FX
@@ -14317,7 +14318,7 @@ Transform:
   m_GameObject: {fileID: 3550831575919724338}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 3551843659776414252}
   - {fileID: 3554663738308278218}
@@ -19191,6 +19192,19 @@ MonoBehaviour:
       m_NumAlphaKeys: 2
   applyChanges: 0
   Keep_applyChanges: 0
+--- !u!114 &1191978311675222174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3550831575919724338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fe4d077e2ef024eaa30e0c46cb6524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopTime: 1
 --- !u!1 &3550831578674557318
 GameObject:
   m_ObjectHideFlags: 0

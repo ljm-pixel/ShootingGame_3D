@@ -39,7 +39,11 @@ public class BinaryDataMgr
     public void InitData()
     {
         //加载Excel表数据
-
+        LoadTable<PlayerInfoContainer, PlayerInfo>(); //加载玩家信息表
+        LoadTable<MonsterInfoContainer, MonsterInfo>();//加载怪物信息表
+        LoadTable<PropInfoContainer, PropInfo>();//加载道具信息表
+        LoadTable<WeaponInfoContainer, WeaponInfo>();//加载武器信息表
+        LoadTable<IteratValueInfoContainer, IteratValueInfo>();//加载迭代值信息表
     }
 
     /// <summary>
