@@ -29,8 +29,13 @@ ScrollRect = UI.ScrollRect
 UIBehaviour = CS.UnityEngine.EventSystems.UIBehaviour
 
 --Canvas 对于我们这个项目来说 是找一次就可以了
-Canvas = GameObject.Find("Canvas").transform
+BagUI = GameObject.Find("BagUI").transform
 
 --自己写的C#脚本相关
---直接得到AB包资源管理器的 单例对象
 ABMgr = CS.ABMgr.GetInstance()
+LuaLifeFun = CS.LuaLifecycleFunMgr.GetInstance()
+-- LuStart = CS.LuStart.GetInstance().LuaStart
+-- LuaUpdate = CS.LuaUpdate.GetInstance().LuaUpdate
+--得到输入
+Input = CS.UnityEngine.Input
+KeyCode = CS.UnityEngine.KeyCode

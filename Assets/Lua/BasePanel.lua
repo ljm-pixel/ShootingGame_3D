@@ -7,7 +7,8 @@ BasePanel.isInitEvent = false -- 是否初始化事件
 function BasePanel:Init(name)
     if self.panelObj == nil then
         self.panelObj = ABMgr:LoadRes("ui", name, typeof(GameObject))
-        self.panelObj.transform:SetParent(Canvas, false)
+
+        self.panelObj.transform:SetParent(BagUI, false)
         local allControls = self.panelObj:GetComponentsInChildren(typeof(UIBehaviour))--获取所有子物体
         -- 遍历所有子物体 按名字存储所需的控件
         for i = 0, allControls.Length-1 do

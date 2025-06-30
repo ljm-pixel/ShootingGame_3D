@@ -16,7 +16,7 @@ public class LuaMgr : BaseManager<LuaMgr>
         //唯一的解析器
         luaEnv = new LuaEnv();
         //添加重定向委托函数
-        // luaEnv.AddLoader(MyCustomLoader); // 默认加载lua文件
+        luaEnv.AddLoader(MyCustomLoader); // 默认加载lua文件
         luaEnv.AddLoader(MyCustomLoaderFormAB); //AB包中加载lua文件
     }
 

@@ -1,11 +1,3 @@
--- BagPanel = {}
--- BagPanel.panelObj = nil
--- BagPanel.btnClose = nil
--- BagPanel.togEquip = nil
--- BagPanel.togItem = nil
--- BagPanel.togGem = nil
--- BagPanel.svBag = nil
-
 -- 改用面向对象 让MainPanel继承父类BasePanel
 BasePanel:subClass("BagPanel")
 BagPanel.Content = nil
@@ -34,49 +26,9 @@ function BagPanel:Init(name)
                 self:ChangeType(2)
             end
         end)
-        self:GetControl("togGem", "Toggle").onValueChanged:AddListener(function(value)
-            if value == true then
-                self:ChangeType(3)
-            end
-        end)
 
         self.isInitEvent = true
     end
-
-    -- if self.panelObj == nil then
-        -- self.panelObj = ABMgr:LoadRes("ui","BagPanel",typeof(GameObject))
-        -- self.panelObj.transform:SetParent(Canvas, false)
-
-        -- self.btnClose = self.panelObj.transform:Find("btnClose"):GetComponent(typeof(Button))
-
-        -- local group = self.panelObj.transform:Find("Group")
-        -- self.togEquip = group:Find("togEquip"):GetComponent(typeof(Toggle))
-        -- self.togItem = group:Find("togItem"):GetComponent(typeof(Toggle))
-        -- self.togGem = group:Find("togGem"):GetComponent(typeof(Toggle))
-
-        -- self.svBag = self.panelObj.transform:Find("svBag"):GetComponent(typeof(ScrollRect))
-        -- self.Content = self.svBag.transform:Find("Viewport"):Find("Content")
-
-        -- self.btnClose.onClick:AddListener(function()
-        --     self:HideMe()
-        -- end)
-    -- end
-
-    -- self.togEquip.onValueChanged:AddListener(function(value)
-    --     if value == true then
-    --         self:ChangeType(1)
-    --     end
-    -- end)
-    -- self.togItem.onValueChanged:AddListener(function(value)
-    --     if value == true then
-    --         self:ChangeType(2)
-    --     end
-    -- end)
-    -- self.togGem.onValueChanged:AddListener(function(value)
-    --     if value == true then
-    --         self:ChangeType(3)
-    --     end
-    -- end)
 end
 
 -- 重写父类显示方法
@@ -87,10 +39,6 @@ function BagPanel:ShowMe(name)
         self:ChangeType(1)
     end
 end
-
--- function BagPanel:HideMe()
---     self.panelObj:SetActive(false)
--- end
 
 function BagPanel:ChangeType(type)
     if self.nowType == type then
@@ -116,7 +64,7 @@ function BagPanel:ChangeType(type)
 
     for i = 1, #nowItems do
         local grid = ItemGrid:new()
-        grid:Init(self.Content, (i-1)%4*175, math.floor((i-1)/4)*175)
+        grid:Init(self.Content, (i-1)%4*120, math.floor((i-1)/4) * -120)
         grid:InitData(nowItems[i])
         --存起来
         table.insert(self.items, grid)
