@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
     {
         if (beInjuredIntervalTime <= 0)
         {
-            CurrentHealth = CurrentHealth - damage;
+            CurrentHealth -= damage;
             print("-1");
             beInjuredIntervalTime = 0.5f;
         }

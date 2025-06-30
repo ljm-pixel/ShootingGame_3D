@@ -64,7 +64,7 @@ public class GameData : MonoBehaviour
     {
         instance = this;
 
-        BinaryDataMgr.Instance.InitData(); //初始化Excel表数据
+        // BinaryDataMgr.Instance.InitData(); //初始化Excel表数据
         //获取Excel表数据
         playerData = BinaryDataMgr.Instance.GetTable<PlayerInfoContainer>();
         monsterData = BinaryDataMgr.Instance.GetTable<MonsterInfoContainer>();

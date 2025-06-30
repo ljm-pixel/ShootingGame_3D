@@ -8,9 +8,9 @@ public class GameUI : BasePanel<GameUI>
     public Text buffHint;
     public GameObject monsterSpawner;
     public Transform PlayerPos;
-    public RectTransform currentHealth;
-    public RectTransform maxHealth;
-    public RectTransform minHealth;
+    public Transform currentHealth;
+    public Transform maxHealth;
+    public Transform minHealth;
     public Text currentHealthText;
     public Text attackText;
     public Text attackSpeedText;
@@ -19,6 +19,7 @@ public class GameUI : BasePanel<GameUI>
     private bool isSpawner = false;
     public override void Init()
     {
+        // maxHealth = currentHealth;
         HideMe();
     }
 
@@ -71,12 +72,12 @@ public class GameUI : BasePanel<GameUI>
 
     public void SetHealthText(float healthRatio)
     {
-        //print("血量"+healthRatio);
-        float x = (maxHealth.position.x - minHealth.position.x) * healthRatio - 47f;
-        //print(x);
-        //print(maxHealth.position.x);
-        //print(minHealth.position.x);
-        currentHealth.position = new Vector3(x, currentHealth.position.y, currentHealth.position.z);
+        // 确保比例在 [0,1] 范围内
+        healthRatio = Mathf.Clamp01(healthRatio);
+        float targetX = Mathf.Lerp(minHealth.position.x, maxHealth.position.x, healthRatio);
+
+        Vector3 newPos = new Vector3(targetX, currentHealth.position.y, currentHealth.position.z);
+        currentHealth.position = newPos;
     }
     public void SetCurrentHealthText(float currentHealth)
     {
