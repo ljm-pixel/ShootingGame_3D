@@ -20,7 +20,9 @@ using UnityEngine;
 
 //时间：每层加10秒
 
-public class GameData : MonoBehaviour 
+//音效数据
+
+public class GameData : MonoBehaviour
 {
     private static GameData instance = new GameData();
     public static GameData Instance => instance;
@@ -51,13 +53,25 @@ public class GameData : MonoBehaviour
         set { monsterSpeed = value; }
     }
 
+
+    public PlayerInfoContainer playerData;
+    public MonsterInfoContainer monsterData;
+    public WeaponInfoContainer weaponData;
+    public PropInfoContainer propData;
+    public IteratValueInfoContainer iteratData;
+
     void Awake()
     {
         instance = this;
+
+        BinaryDataMgr.Instance.InitData(); //初始化Excel表数据
+        //获取Excel表数据
+        playerData = BinaryDataMgr.Instance.GetTable<PlayerInfoContainer>();
+        monsterData = BinaryDataMgr.Instance.GetTable<MonsterInfoContainer>();
+        weaponData = BinaryDataMgr.Instance.GetTable<WeaponInfoContainer>();
+        propData = BinaryDataMgr.Instance.GetTable<PropInfoContainer>();
+        iteratData = BinaryDataMgr.Instance.GetTable<IteratValueInfoContainer>();
+
         player = Player.GetComponent<Player>();
     }
-    //private GameData()
-    //{
-    //    player = Player.GetComponent<Player>();
-    //}
 }

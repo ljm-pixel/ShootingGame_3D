@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class BulletShell : MonoBehaviour
 {
-    public float speed;
+    public float speed = 0.01f;
     public float stopTime = 1f;
-    public float fadeSpeed = .01f;
     new private Rigidbody rigidbody;
 
     //private SpriteRenderer sprite;//  用于渐隐
@@ -35,11 +34,6 @@ public class BulletShell : MonoBehaviour
         rigidbody.velocity = Vector3.zero;
         rigidbody.mass = 0;
 
-        //while (sprite.color.a > 0)
-        //{
-        //    sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.g, sprite.color.a - fadeSpeed);
-        //    yield return new WaitForFixedUpdate();
-        //}
         // Destroy(gameObject);
         ObjectPool.Instance.PushObject(gameObject);
     }

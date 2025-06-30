@@ -5,13 +5,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     
-    private float currentHealth = 50f;
-    private float maxHealth = 50f;
-    private float attackSpeed = 1f;
-    private float attack = 10f;
-    private float curativeDose = 1f;
-    private int numBullet = 50;
-    private int shotgunBulletNum = 3;
+    private float currentHealth;
+    private float maxHealth;
+    private float attackSpeed;
+    private float attack;
+    private float curativeDose;
+    private int numBullet;
+    private int shotgunBulletNum;
+    private float beInjuredIntervalTime;
 
     public Animator animator;
     public float roundSpeed = 200f;
@@ -20,12 +21,11 @@ public class Player : MonoBehaviour
 
     //private float currentHealth;
     private Transform playerPos;
-    private float beInjuredIntervalTime = 0.5f;
 
     public float CurrentHealth
     {
         get => currentHealth;
-        set 
+        set
         {
             currentHealth = value;
             GameUI.Instance.SetHealthText(currentHealth / maxHealth);
@@ -72,6 +72,7 @@ public class Player : MonoBehaviour
         {
             numBullet = value;
             GameUI.Instance.SetBulletNumText(numBullet);
+            GameData.Instance.weaponData.dataDic[WeaponSpawner.Instance.GunNum + 1].bulletNum = numBullet;
         }
     }
     public int ShotgunBulletNum
@@ -89,6 +90,16 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MaxHealth = GameData.Instance.playerData.dataDic[1].health;
+        CurrentHealth = GameData.Instance.playerData.dataDic[1].health;
+        
+        Attack = GameData.Instance.playerData.dataDic[1].attack;
+        CurativeDose = GameData.Instance.playerData.dataDic[1].curativeDose;
+        attackSpeed = GameData.Instance.playerData.dataDic[1].attackSpeed;
+        BeInjuredIntervalTime = GameData.Instance.playerData.dataDic[1].intervalTime;
+        NumBullet = GameData.Instance.weaponData.dataDic[1].bulletNum;
+        ShotgunBulletNum = GameData.Instance.weaponData.dataDic[2].fireNum;
+
         GameUI.Instance.SetCurrentHealthText(currentHealth);
         GameUI.Instance.SetAttackText(attack);
         GameUI.Instance.SetAttackSpeedText(attackSpeed);

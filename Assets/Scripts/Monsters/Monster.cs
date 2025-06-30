@@ -6,15 +6,16 @@ using UnityEngine.UI;
 
 public class Monster : MonoBehaviour
 {
+    protected float speed;
+    protected float damage;
+    protected float maxHealth;
+
     public RectTransform minHealthPos;
     public RectTransform maxHealthPos;
     public RectTransform healthPos;
     private bool isAtk = false;
     private bool isTime = false;
 
-    protected float speed = 1f;
-    protected float damage = 2f;
-    protected float maxHealth;
     private float currentHealth;
     private Transform playerPos;
     private NavMeshAgent agent;
@@ -25,12 +26,9 @@ public class Monster : MonoBehaviour
 
     public GameObject atkObj;
 
-    protected virtual void Initialize()
-    {
-        maxHealth = GameData.Instance.MonsterHealth * 5f;
-        damage = GameData.Instance.MonsterAttack * 2f;
-        speed = GameData.Instance.MonsterSpeed * 1.5f;
-    }
+    // 初始化数据
+    protected virtual void Initialize() { }
+
     private void Awake()
     {
         // 通过标签查找玩家（确保玩家对象有 "Player" 标签）
@@ -44,7 +42,7 @@ public class Monster : MonoBehaviour
             Debug.LogError("未找到玩家对象！");
         }
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = speed;
+        
         animator = GetComponent<Animator>();
 
         //atkObj = this.transform.Find("ATK").gameObject;
@@ -57,6 +55,8 @@ public class Monster : MonoBehaviour
         healthPos.position = maxHealthPos.position;
         gameObject.GetComponent<Collider>().enabled = true;
         
+        agent.speed = speed;
+
         atkObj.GetComponent<MonsATK>().Damage = damage;
         atkObj.SetActive(false);
     }
@@ -104,25 +104,13 @@ public class Monster : MonoBehaviour
                 PropSpawner.Instance.SpawnerPropPrefabs(transform);
             gameObject.GetComponent<Collider>().enabled = false;
             animator.SetTrigger("Die");
-            //Die();
-            Invoke("Die", 1.3f);
+            StartCoroutine(StopMone(1.3f));
         }
         //StopMone(animator.GetCurrentAnimatorStateInfo(0).length);
     }
-    public void Die()
+    IEnumerator StopMone(float time)
     {
+        yield return new WaitForSeconds(time);
         ObjectPool.Instance.PushObject(gameObject);
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    //if (!isAtk)
-    //    //    return;
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        print("Player-1");
-    //        GameData.Instance.player.TakeDamage(damage);
-    //        atkObj.SetActive(false);
-    //    }
-    //}
 }
