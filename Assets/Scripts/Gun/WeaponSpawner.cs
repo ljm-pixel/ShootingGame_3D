@@ -7,7 +7,9 @@ public class WeaponSpawner : MonoBehaviour
     public List<GameObject> weaponPrefabs;
     public List<GameObject> weapons;
     public Transform weaponPos;
+    // 当前武器编号
     private int gunNum = 0;
+    public int GunNum { get => gunNum; }
 
     private static WeaponSpawner instance;
     public static WeaponSpawner Instance => instance;
@@ -15,18 +17,15 @@ public class WeaponSpawner : MonoBehaviour
     {
         instance = this;
         weapons = new List<GameObject>();
-        //print(weapons.Count);
-        SpawnWeaponPrefabs(0);
-        //print(weapons.Count);
-        SpawnWeaponPrefabs(0);
-        //print(weapons.Count);
+        SpawnWeaponPrefabs(0);//spawn 1
+        SpawnWeaponPrefabs(0);//spawn 2
     }
 
     public void SpawnWeaponPrefabs(int index)
     {
         if (weaponPrefabs.Count == 0)
             return;
-        GameObject weaponObj = ObjectPool.Instance.GetObject(weaponPrefabs[index]);
+        GameObject weaponObj = GameObject.Instantiate(weaponPrefabs[index]);
         weaponObj.transform.SetParent(weaponPos, false);
         weapons.Add(weaponObj);
         weaponPrefabs.RemoveAt(index);
@@ -40,7 +39,7 @@ public class WeaponSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(weapons[0] != null)
+        if (weapons[0] != null)
             weapons[0].SetActive(true);
     }
 
@@ -60,6 +59,8 @@ public class WeaponSpawner : MonoBehaviour
                 gunNum = 0;
             }
             weapons[gunNum].SetActive(true);
+            GameData.Instance.player.NumBullet = GameData.Instance.weaponData.dataDic[gunNum + 1].bulletNum;
         }
     }
+    
 }

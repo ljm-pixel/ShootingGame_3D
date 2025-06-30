@@ -1,0 +1,32 @@
+1.使用说明：
+Excel文件应该放置在ArtRes/Excel文件夹当中
+然后点击Unity上方的工具栏的GameTool即可生成的容器类和数据结构类
+
+加载二进制数据方法：LoadTable<容器类名, 数据结构名>()；
+获取表数据方法：GetTable<容器类名>()；
+一步存储方法：void Save(object obj, string fileName)     obj：存储的类对象   fileName：存储的文件名
+一步读取方法：T Load<T>(string fileName) where T : class     T：读取的类对象   fileName：读取的文件名
+
+使用流程例如：
+BinaryDataMgr.Instance.LoadTable<PlayerInfoContainer, PlayerInfo>(); //先加载二进制数据到内存中
+PlayerInfoContainer playerData = BinaryDataMgr.Instance.GetTable<PlayerInfoContainer>(); //获取加载的数据
+print(playerData.dataDic[0].name); //使用获取到的数据
+
+Test test = new Test();
+test.id = 1;
+test.name = "jm";
+BinaryDataMgr.Instance.Save(test, "Test");//保存数据到二进制文件中
+BinaryDataMgr.Instance.Load<Test>("Test");//加载二进制文件中的数据
+print(test.name);//使用加载的数据
+
+2.配置表规则
+第一行：描述信息（不起作用）
+第二行：字段名
+第三行：字段类型（字段类型一定不要配置错误，字段类型支持int float bool string）
+第四行：主键是哪一个字段 需要通过 key 或 keyJM 来标识主键，key为不对数据加密，keyJM则为对数据加密
+第五行~第n行：就是具体数据信息
+
+下方的表名决定了数据结构类，容器类，2进制文件的文件名
+
+3.生成的容器类和数据结构类的路径为：/Scripts/ExcelData/Container/ 和 /Scripts/ExcelData/DataClass/
+  生成2进制文件的路径为：Application.streamingAssetsPath + "/Binary/"

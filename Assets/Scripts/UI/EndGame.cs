@@ -13,6 +13,7 @@ public class EndGame : BasePanel<EndGame>
         HideMe();
         button.onClick.AddListener(() =>
         {
+            ObjectPool.Instance.Clear();// 清空对象池
             HideMe();
             //加载下一场景
             SceneManager.LoadScene(1);
