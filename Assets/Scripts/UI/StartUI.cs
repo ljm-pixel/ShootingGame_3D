@@ -15,8 +15,6 @@ public class StartUI : BasePanel<StartUI>
         OpenMouse();
         startGameButton.onClick.AddListener(() =>
         {
-            //print(1);
-            CloseMouse();
             GameUI.Instance.StartGame();
             HideMe();
         });
@@ -28,11 +26,5 @@ public class StartUI : BasePanel<StartUI>
         {
             PlotUI.Instance.ShowMe();
         });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

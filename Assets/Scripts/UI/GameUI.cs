@@ -19,14 +19,11 @@ public class GameUI : BasePanel<GameUI>
     private bool isSpawner = false;
     public override void Init()
     {
-        // maxHealth = currentHealth;
         HideMe();
     }
 
     private void OnEnable()
     {
-        CloseMouse();
-
         if (!isSpawner)
         {
             isSpawner = true;
@@ -35,20 +32,19 @@ public class GameUI : BasePanel<GameUI>
         CountdownTimer.Instance.TheNextLevel();
         MonsterSpawner spawner = monsterSpawner.GetComponent<MonsterSpawner>();
         spawner.StartSpawner();
+        CloseMouse();
     }
     public void StartGame()
     {
         ShowMe();
-        //CountdownTimer.Instance.TheNextLevel();
         CountdownTimer.Instance.StartCountdown();
-        //MonsterSpawner spawner = monsterSpawner.GetComponent<MonsterSpawner>();
-        //spawner.StartSpawner();
     }
 
     public void StopGame()
     {
         MonsterSpawner spawner = monsterSpawner.GetComponent<MonsterSpawner>();
         spawner.StopSpawner();
+        OpenMouse();
         HideMe();
     }
 

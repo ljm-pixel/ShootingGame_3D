@@ -29,14 +29,6 @@ public class WeaponSpawner : MonoBehaviour
         weaponObj.transform.SetParent(weaponPos, false);
         weapons.Add(weaponObj);
         weaponPrefabs.RemoveAt(index);
-        if (GameData.Instance.bagItems.ContainsKey(weaponObj.gameObject.name[0]))
-        {
-            GameData.Instance.bagItems[weaponObj.gameObject.name[0]]++;
-        }
-        else
-        {
-            GameData.Instance.bagItems.Add(weaponObj.gameObject.name[0], 1);
-        }
         weaponObj.SetActive(false);
     }
     public string GetWeaponHint(int index)

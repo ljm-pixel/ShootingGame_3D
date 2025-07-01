@@ -11,13 +11,18 @@ public class ExplodeProp : Prop
         GameUI.Instance.SetBuffHint(BuffHint());
         foreach (GameObject monster in monsters)
         {
-            if (monster != null) 
+            if (monster != null)
                 ObjectPool.Instance.PushObject(monster);
         }
     }
 
     public override string BuffHint()
     {
+        Init();
         return "清除场上所有怪物";
+    }
+    public override int GetID()
+    {
+        return GameData.Instance.propData.dataDic[7].id;
     }
 }

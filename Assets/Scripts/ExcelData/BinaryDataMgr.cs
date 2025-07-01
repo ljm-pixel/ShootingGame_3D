@@ -34,7 +34,7 @@ public class BinaryDataMgr
     private BinaryDataMgr()
     {
         InitData();
-    }
+    }   
 
     public void InitData()
     {

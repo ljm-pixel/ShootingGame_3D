@@ -14,7 +14,7 @@ public class Gun : MonoBehaviour
     protected virtual void Update()
     {
         //判断GameUI是否为显示状态
-        if (GameUI.Instance.gameObject.activeSelf)
+        if (GameUI.Instance.isFire)
             Shoot();
     }
 

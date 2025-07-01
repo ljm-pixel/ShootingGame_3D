@@ -3,11 +3,11 @@ PlayerParam.obj = nil
 PlayerParam.Text = nil
 
 function PlayerParam:Init(father)
-    self.panelObj = ABMgr:LoadRes("ui", "PlayerParam", typeof(GameObject))
+    self.obj = ABMgr:LoadRes("ui", "PlayerParam", typeof(GameObject))
 
-    self.panelObj.transform:SetParent(father, false)
+    self.obj.transform:SetParent(father, false)
     local controls = {}
-    local allControls = self.panelObj:GetComponentsInChildren(typeof(UIBehaviour))--获取所有子物体
+    local allControls = self.obj:GetComponentsInChildren(typeof(UIBehaviour))--获取所有子物体
     -- 遍历所有子物体 按名字存储所需的控件
     for i = 0, allControls.Length-1 do
         local controlName = allControls[i].name
@@ -20,7 +20,7 @@ function PlayerParam:Init(father)
             end
         end
     end
-
+    -- 更新数据
     controls["txtHealth"]["Text"].text = GameData.player.CurrentHealth
     controls["txtATK"]["Text"].text = GameData.player.Attack
     controls["txtATKSpeed"]["Text"].text = GameData.player.AttackSpeed

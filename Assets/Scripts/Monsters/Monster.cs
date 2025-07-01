@@ -103,6 +103,8 @@ public class Monster : MonoBehaviour
             if(Random.Range(0, 100) < 50)
                 PropSpawner.Instance.SpawnerPropPrefabs(transform);
             gameObject.GetComponent<Collider>().enabled = false;
+            agent.isStopped = true;// 停止导航
+            agent.velocity = Vector3.zero;// 停止移动
             animator.SetTrigger("Die");
             StartCoroutine(StopMone(1.3f));
         }
