@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LuaCopyEditor : Editor
 {
-    [MenuItem("Lua/CopyLuaToTxt")]
+    [MenuItem("GameTools/CopyLuaToTxt")]
     public static void CopyLuaToTxt()
     {
         string path = Application.dataPath + "/Lua/";

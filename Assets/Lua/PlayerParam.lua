@@ -1,0 +1,35 @@
+Object:subClass("PlayerParam")
+PlayerParam.obj = nil
+PlayerParam.Text = nil
+
+function PlayerParam:Init(father)
+    self.panelObj = ABMgr:LoadRes("ui", "PlayerParam", typeof(GameObject))
+
+    self.panelObj.transform:SetParent(father, false)
+    local controls = {}
+    local allControls = self.panelObj:GetComponentsInChildren(typeof(UIBehaviour))--获取所有子物体
+    -- 遍历所有子物体 按名字存储所需的控件
+    for i = 0, allControls.Length-1 do
+        local controlName = allControls[i].name
+        if string.find(controlName, "txt") ~= nil then
+            local typeName = allControls[i]:GetType().Name
+            if controls[controlName] ~= nil then
+                controls[controlName][typeName] = allControls[i]
+            else
+                controls[controlName] = {[typeName] = allControls[i]}
+            end
+        end
+    end
+
+    controls["txtHealth"]["Text"].text = GameData.player.CurrentHealth
+    controls["txtATK"]["Text"].text = GameData.player.Attack
+    controls["txtATKSpeed"]["Text"].text = GameData.player.AttackSpeed
+    controls["txtCurative"]["Text"].text = GameData.player.CurativeDose
+    controls["txtRifle"]["Text"].text = GameData.weaponData.dataDic[1].bulletNum
+    controls["txtStotgun"]["Text"].text = GameData.weaponData.dataDic[2].bulletNum
+end
+
+function PlayerParam:Destroy()
+    GameObject.Destroy(self.obj)
+    self.obj = nil
+end

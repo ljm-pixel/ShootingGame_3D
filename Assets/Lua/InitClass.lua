@@ -1,5 +1,4 @@
 --常用别名都在这里面定位
---准备我们自己之前导入的脚本
 --面向对象相关
 require("Object")
 --字符串拆分
@@ -34,8 +33,8 @@ BagUI = GameObject.Find("BagUI").transform
 --自己写的C#脚本相关
 ABMgr = CS.ABMgr.GetInstance()
 LuaLifeFun = CS.LuaLifecycleFunMgr.GetInstance()
--- LuStart = CS.LuStart.GetInstance().LuaStart
--- LuaUpdate = CS.LuaUpdate.GetInstance().LuaUpdate
 --得到输入
 Input = CS.UnityEngine.Input
 KeyCode = CS.UnityEngine.KeyCode
+
+GameData = CS.GameData.Instance

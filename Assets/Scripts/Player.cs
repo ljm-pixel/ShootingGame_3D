@@ -18,8 +18,6 @@ public class Player : MonoBehaviour
     public float roundSpeed = 200f;
     public GameObject[] guns;
     private int gunNum = 0;
-
-    //private float currentHealth;
     private Transform playerPos;
 
     public float CurrentHealth
@@ -95,7 +93,7 @@ public class Player : MonoBehaviour
         
         Attack = GameData.Instance.playerData.dataDic[1].attack;
         CurativeDose = GameData.Instance.playerData.dataDic[1].curativeDose;
-        attackSpeed = GameData.Instance.playerData.dataDic[1].attackSpeed;
+        AttackSpeed = GameData.Instance.playerData.dataDic[1].attackSpeed;
         BeInjuredIntervalTime = GameData.Instance.playerData.dataDic[1].intervalTime;
         NumBullet = GameData.Instance.weaponData.dataDic[1].bulletNum;
         ShotgunBulletNum = GameData.Instance.weaponData.dataDic[2].fireNum;

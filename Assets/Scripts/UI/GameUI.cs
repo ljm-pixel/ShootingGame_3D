@@ -30,7 +30,7 @@ public class GameUI : BasePanel<GameUI>
         if (!isSpawner)
         {
             isSpawner = true;
-            return; 
+            return;
         }
         CountdownTimer.Instance.TheNextLevel();
         MonsterSpawner spawner = monsterSpawner.GetComponent<MonsterSpawner>();
@@ -54,7 +54,7 @@ public class GameUI : BasePanel<GameUI>
 
     public void SetBuffHint(string hint)
     {
-        if(buffHint != null)
+        if (buffHint != null)
         {
             buffHint.text = hint;
             Invoke("ClearBuffHint", 2f);

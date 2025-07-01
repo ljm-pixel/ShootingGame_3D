@@ -1,6 +1,6 @@
 -- 让MainPanel继承父类BasePanel
 BasePanel:subClass("MainPanel")
-
+MainPanel.isMouse = false
 function MainPanel:Init(name)
     self.base.Init(self, name)
     --为了只添加一次事件监听
@@ -20,9 +20,18 @@ end
 function MainPanel:LuaUpdate()
     --每帧调用
     if Input.GetKeyDown(KeyCode.B) then
-        print("B 按下")
-        BagPanel:ShowMe("BagPanel")
+        if(self.isMouse == false) then
+            self.isMouse = true
+            BagPanel:ShowMe("BagPanel")
+            CS.GameUI.Instance:OpenMouse()
+        else
+            self.isMouse = false
+            BagPanel:HideMe()
+            CS.GameUI.Instance:CloseMouse()
+        end
     end
 end
 
-LuaLifeFun.LuaUpdate = MainPanel.LuaUpdate
+LuaLifeFun.LuaUpdate = function()
+    MainPanel:LuaUpdate()
+end

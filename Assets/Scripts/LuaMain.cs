@@ -28,12 +28,6 @@ public class LuaMain : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            LuaMgr.GetInstance().DoLuaFile("MainPanel");
-        }
-        {
-            
-        }
+        
     }
 }

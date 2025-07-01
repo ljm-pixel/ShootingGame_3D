@@ -16,14 +16,19 @@ function BagPanel:Init(name)
             self:HideMe()
         end)
         -- 为 toggle 添加事件
-        self:GetControl("togEquip", "Toggle").onValueChanged:AddListener(function(value)
+        self:GetControl("togPlayer", "Toggle").onValueChanged:AddListener(function(value)
             if value == true then
                 self:ChangeType(1)
             end
         end)
-        self:GetControl("togItem", "Toggle").onValueChanged:AddListener(function(value)
+        self:GetControl("togEquip", "Toggle").onValueChanged:AddListener(function(value)
             if value == true then
                 self:ChangeType(2)
+            end
+        end)
+        self:GetControl("togItem", "Toggle").onValueChanged:AddListener(function(value)
+            if value == true then
+                self:ChangeType(3)
             end
         end)
 
@@ -53,21 +58,39 @@ function BagPanel:ChangeType(type)
     end
     self.items = {}--列表清空
 
-    local nowItems = nil
     if type == 1 then
-        nowItems = PlayerData.equips
+        local param = PlayerParam:new()
+        param:Init(self.Content)
+        table.insert(self.items, param)
     elseif type == 2 then
-        nowItems = PlayerData.items
+        local i = 0
+        for k, v in pairs(GameData.bagItems) do
+            if k > 7 then
+                local grid = ItemGrid:new()
+                grid:Init(self.Content, (i)%4*120, math.floor((i)/4) * -120)
+                grid:InitData({id = k, num = v})
+                --存起来
+                table.insert(self.items, grid)
+                i = i + 1
+            end
+        end
     else
-        nowItems = PlayerData.gems
+        for k, v in pairs(GameData.bagItems) do
+            if k < 8 then
+                local grid = ItemGrid:new()
+                grid:Init(self.Content, (k-1)%4*120, math.floor((k-1)/4) * -120)
+                grid:InitData({id = k, num = v})
+                --存起来
+                table.insert(self.items, grid)
+            end
+        end
     end
 
-    for i = 1, #nowItems do
-        local grid = ItemGrid:new()
-        grid:Init(self.Content, (i-1)%4*120, math.floor((i-1)/4) * -120)
-        grid:InitData(nowItems[i])
-        --存起来
-        table.insert(self.items, grid)
-    end
-
+    -- for i = 1, #nowItems do
+    --     local grid = ItemGrid:new()
+    --     grid:Init(self.Content, (i-1)%4*120, math.floor((i-1)/4) * -120)
+    --     grid:InitData(nowItems[i])
+    --     --存起来
+    --     table.insert(self.items, grid)
+    -- end
 end

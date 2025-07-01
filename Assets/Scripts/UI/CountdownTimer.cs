@@ -134,9 +134,12 @@ public class CountdownTimer : BasePanel<CountdownTimer>
         levelText.text = "第 " + ++levelNum + " 层";
         if(GameData.Instance.player.BeInjuredIntervalTime > maxIntervalTime)
            GameData.Instance.player.BeInjuredIntervalTime -= addIntervalTime;// 每层减少
-        GameData.Instance.MonsterAttack += addMonsterAttack;
-        GameData.Instance.MonsterHealth += addMonsterHealth;
-        if(GameData.Instance.MonsterSpeed < maxMonsterSpeed)
-           GameData.Instance.MonsterSpeed += addMonsterSpeed;
+        foreach (var item in GameData.Instance.monsterData.dataDic)
+        {
+            item.Value.attack += addMonsterAttack;
+            item.Value.health += addMonsterHealth;
+            if(item.Value.speed < maxMonsterSpeed)
+                item.Value.speed += addMonsterSpeed;
+        }
     }
 }
