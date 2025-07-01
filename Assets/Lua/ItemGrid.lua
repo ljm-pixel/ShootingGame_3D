@@ -12,10 +12,8 @@ function ItemGrid:Init(father,posX,posY)
 end
 
 function ItemGrid:InitData(itemData)
-    local data = ItemData[itemData.id]
-    local strs = string.split(data.icon, "_")
-    local spriteAtlas = ABMgr:LoadRes("ui", strs[1], typeof(SpriteAtlas))
-    self.imgIcon.sprite = spriteAtlas:GetSprite(strs[2])
+    local spriteAtlas = ABMgr:LoadRes("ui", "icon", typeof(SpriteAtlas))
+    self.imgIcon.sprite = spriteAtlas:GetSprite(itemData.id)
     self.Text.text = itemData.num
 end
 

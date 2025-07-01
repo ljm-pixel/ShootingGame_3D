@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class AttackSpeedProp : Prop
 {
-    public float increaseAmplitude = 1f;
-
+    public float increaseAmplitude;
+    private float maxAttackSpeed;
+    public override void Init()
+    {
+        increaseAmplitude = GameData.Instance.propData.dataDic[5].value;
+        maxAttackSpeed = GameData.Instance.propData.dataDic[5].maxValue;
+    }
     public override void TriggerEffect()
     {
-        if(GameData.Instance.player.AttackSpeed < 10f)
+        if (GameData.Instance.player.AttackSpeed < maxAttackSpeed)
             GameData.Instance.player.AttackSpeed += increaseAmplitude;
         GameUI.Instance.SetBuffHint(BuffHint());
     }
 
     public override string BuffHint()
     {
-        if (GameData.Instance.player.AttackSpeed >= 10f)
+        if (GameData.Instance.player.AttackSpeed >= maxAttackSpeed)
             return "攻击速度已经达到最大";
         return "攻击速度+" + increaseAmplitude;
+    }
+    public override int GetID()
+    {
+        return GameData.Instance.propData.dataDic[5].id;
     }
 }

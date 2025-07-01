@@ -26,34 +26,8 @@ public class GameData : MonoBehaviour
 {
     private static GameData instance = new GameData();
     public static GameData Instance => instance;
-
-    public GameObject Player;
     public Player player;
-
-    //怪物血量
-    private float monsterHealth = 1f;
-    //怪物伤害
-    private float monsterAttack = 1f;
-    //怪物移速
-    private float monsterSpeed = 1f;
-
-    public float MonsterHealth
-    {
-        get { return monsterHealth; }
-        set { monsterHealth = value; }
-    }
-    public float MonsterAttack
-    {
-        get { return monsterAttack; }
-        set { monsterAttack = value; }
-    }
-    public float MonsterSpeed
-    {
-        get { return monsterSpeed; }
-        set { monsterSpeed = value; }
-    }
-
-
+    public Dictionary<int, int> bagItems = new Dictionary<int, int>(); 
     public PlayerInfoContainer playerData;
     public MonsterInfoContainer monsterData;
     public WeaponInfoContainer weaponData;
@@ -63,15 +37,12 @@ public class GameData : MonoBehaviour
     void Awake()
     {
         instance = this;
-
-        BinaryDataMgr.Instance.InitData(); //初始化Excel表数据
+        // BinaryDataMgr.Instance.InitData(); //初始化Excel表数据
         //获取Excel表数据
         playerData = BinaryDataMgr.Instance.GetTable<PlayerInfoContainer>();
         monsterData = BinaryDataMgr.Instance.GetTable<MonsterInfoContainer>();
         weaponData = BinaryDataMgr.Instance.GetTable<WeaponInfoContainer>();
         propData = BinaryDataMgr.Instance.GetTable<PropInfoContainer>();
         iteratData = BinaryDataMgr.Instance.GetTable<IteratValueInfoContainer>();
-
-        player = Player.GetComponent<Player>();
     }
 }

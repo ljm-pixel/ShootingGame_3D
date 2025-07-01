@@ -13,8 +13,8 @@ public class CountdownTimer : BasePanel<CountdownTimer>
     private float addIntervalTime;
     private float maxIntervalTime;
 
-    public Text countdownText;  // 拖入倒计时 Text 组件
-    private float totalTime = 20f; // 总倒计时时间（秒）
+    public Text countdownText;
+    private float totalTime; 
     public bool autoStart = false; // 是否自动开始倒计时
     public Text levelText;
     public GameObject ExplosionProp;
@@ -35,6 +35,7 @@ public class CountdownTimer : BasePanel<CountdownTimer>
         maxMonsterSpeed = GameData.Instance.iteratData.dataDic["MonsterSpeed"].maxValue;
         addIntervalTime = GameData.Instance.iteratData.dataDic["IntervalTime"].value;
         maxIntervalTime = GameData.Instance.iteratData.dataDic["IntervalTime"].maxValue;
+        totalTime = 20f; // 总倒计时时间（秒）
     }
 
     // 外部调用启动倒计时
@@ -74,13 +75,8 @@ public class CountdownTimer : BasePanel<CountdownTimer>
     {
         int minutes = Mathf.FloorToInt(time / 60f);
         int seconds = Mathf.FloorToInt(time % 60f);
-        //int milliseconds = Mathf.FloorToInt((time * 1000) % 1000);
-
-        // 格式示例1: "01:23"
+        // 格式: "01:23"
         countdownText.text = $"{minutes:00}:{seconds:00}";
-
-        // 格式示例2: "01:23.456"
-        // countdownText.text = $"{minutes:00}:{seconds:00}.{milliseconds:000}";
     }
 
     void OnCountdownEnd()
@@ -132,11 +128,14 @@ public class CountdownTimer : BasePanel<CountdownTimer>
     {
         totalTime += addLevelTime;
         levelText.text = "第 " + ++levelNum + " 层";
-        if(GameData.Instance.player.BeInjuredIntervalTime > maxIntervalTime)
-           GameData.Instance.player.BeInjuredIntervalTime -= addIntervalTime;// 每层减少
-        GameData.Instance.MonsterAttack += addMonsterAttack;
-        GameData.Instance.MonsterHealth += addMonsterHealth;
-        if(GameData.Instance.MonsterSpeed < maxMonsterSpeed)
-           GameData.Instance.MonsterSpeed += addMonsterSpeed;
+        if (GameData.Instance.player.BeInjuredIntervalTime > maxIntervalTime)
+            GameData.Instance.player.BeInjuredIntervalTime -= addIntervalTime;// 每层减少
+        foreach (var item in GameData.Instance.monsterData.dataDic)
+        {
+            item.Value.attack += addMonsterAttack;
+            item.Value.health += addMonsterHealth;
+            if (item.Value.speed < maxMonsterSpeed)
+                item.Value.speed += addMonsterSpeed;
+        }
     }
 }
