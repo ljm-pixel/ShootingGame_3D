@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AddShotgunBulletNumProp : Prop
 {
-    public int addNum;
+    private int addNum;
     private int maxNum;
     public override void Init()
     {

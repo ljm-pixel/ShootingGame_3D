@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class GameUI : BasePanel<GameUI>
 {
     public Text buffHint;
-    public GameObject monsterSpawner;
     public Transform PlayerPos;
     public Transform currentHealth;
     public Transform maxHealth;
@@ -15,6 +14,7 @@ public class GameUI : BasePanel<GameUI>
     public Text attackText;
     public Text attackSpeedText;
     public Text bulletNumText;
+    public GameObject monsterSpawner;
 
     private bool isSpawner = false;
     public override void Init()

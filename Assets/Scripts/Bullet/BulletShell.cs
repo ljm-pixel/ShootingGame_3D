@@ -7,9 +7,6 @@ public class BulletShell : MonoBehaviour
     public float speed = 0.01f;
     public float stopTime = 1f;
     new private Rigidbody rigidbody;
-
-    //private SpriteRenderer sprite;//  用于渐隐
-
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -21,7 +18,6 @@ public class BulletShell : MonoBehaviour
         float angel = Random.Range(-30f, 30f);
         rigidbody.velocity = Quaternion.AngleAxis(angel, Vector3.forward) * Vector3.up * speed;
 
-        //sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1);
         // 质量
         rigidbody.mass = 3;
 

@@ -10,8 +10,6 @@ public class Bullet : MonoBehaviour
 
     public GameObject explosionPrefab;
     new Rigidbody rigidbody;
-    // private float time = 5f;
-
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -29,17 +27,8 @@ public class Bullet : MonoBehaviour
         rigidbody.velocity = direction * fireSpeed;
     }
 
-    // void Update()
-    // {
-    //     if(time > 0)
-    //         time -= Time.deltaTime;
-    //     else
-    //         ObjectPool.Instance.PushObject(gameObject);
-    // }
-
     private void OnTriggerEnter(Collider other)
     {
-        // Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         GameObject exp = ObjectPool.Instance.GetObject(explosionPrefab);// 爆炸
         exp.transform.position = transform.position;
         exp.transform.parent = other.transform;

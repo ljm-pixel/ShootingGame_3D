@@ -3,8 +3,6 @@
 require("Object")
 --字符串拆分
 require("SplitTools")
---Json解析
-Json = require("JsonUtility")
 
 --Unity相关的
 GameObject = CS.UnityEngine.GameObject
@@ -27,7 +25,7 @@ Toggle = UI.Toggle
 ScrollRect = UI.ScrollRect
 UIBehaviour = CS.UnityEngine.EventSystems.UIBehaviour
 
---Canvas 对于我们这个项目来说 是找一次就可以了
+--Canvas 
 BagUI = GameObject.Find("BagUI").transform
 
 --自己写的C#脚本相关

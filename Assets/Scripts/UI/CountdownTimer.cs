@@ -5,14 +5,6 @@ using UnityEngine.UI;
 
 public class CountdownTimer : BasePanel<CountdownTimer>
 {
-    private float addLevelTime;
-    private float addMonsterHealth;
-    private float addMonsterAttack;
-    private float addMonsterSpeed;
-    private float maxMonsterSpeed;
-    private float addIntervalTime;
-    private float maxIntervalTime;
-
     public Text countdownText;
     private float totalTime; 
     public bool autoStart = false; // 是否自动开始倒计时
@@ -22,6 +14,15 @@ public class CountdownTimer : BasePanel<CountdownTimer>
 
     private float currentTime;
     private bool isCounting = false;
+
+    private float addLevelTime;
+    private float addMonsterHealth;
+    private float addMonsterAttack;
+    private float addMonsterSpeed;
+    private float maxMonsterSpeed;
+    private float addIntervalTime;
+    private float maxIntervalTime;
+
 
     public override void Init()
     {

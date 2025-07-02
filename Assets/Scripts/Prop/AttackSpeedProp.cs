@@ -13,13 +13,14 @@ public class AttackSpeedProp : Prop
     }
     public override void TriggerEffect()
     {
+        GameUI.Instance.SetBuffHint(BuffHint());
         if (GameData.Instance.player.AttackSpeed < maxAttackSpeed)
             GameData.Instance.player.AttackSpeed += increaseAmplitude;
-        GameUI.Instance.SetBuffHint(BuffHint());
     }
 
     public override string BuffHint()
     {
+        Init();
         if (GameData.Instance.player.AttackSpeed >= maxAttackSpeed)
             return "攻击速度已经达到最大";
         return "攻击速度+" + increaseAmplitude;

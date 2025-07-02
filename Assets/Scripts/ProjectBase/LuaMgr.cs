@@ -33,7 +33,7 @@ public class LuaMgr : BaseManager<LuaMgr>
     private byte[] MyCustomLoader(ref string filepath)
     {
         //测试传入的参数是什么
-        Debug.Log(filepath);
+        // Debug.Log(filepath);
         //决定Lua文件所在路径
         string path = Application.dataPath + "/Lua/" + filepath + ".lua";
         //C#自带的文件读取类

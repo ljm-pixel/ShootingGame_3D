@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
     private float currentHealth;
     private float maxHealth;
     private float attackSpeed;
@@ -16,9 +15,6 @@ public class Player : MonoBehaviour
 
     public Animator animator;
     public float roundSpeed = 200f;
-    public GameObject[] guns;
-    private int gunNum = 0;
-    private Transform playerPos;
 
     public float CurrentHealth
     {
@@ -109,7 +105,6 @@ public class Player : MonoBehaviour
         if (beInjuredIntervalTime <= 0)
         {
             CurrentHealth -= damage;
-            print("-1");
             beInjuredIntervalTime = 0.5f;
         }
         if (CurrentHealth <= 0)
