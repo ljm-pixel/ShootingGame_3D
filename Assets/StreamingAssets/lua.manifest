@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3080365369
+CRC: 1738126866
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: dc294abd3c7108159174d6c554288c3c
+    Hash: 14dce55897b80c936427471f7d2066f0
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -19,10 +19,8 @@ Assets:
 - Assets/Luatxt/InitClass.lua.txt
 - Assets/Luatxt/BasePanel.lua.txt
 - Assets/Luatxt/ItemGrid.lua.txt
-- Assets/Luatxt/JsonUtility.lua.txt
 - Assets/Luatxt/Main.lua.txt
 - Assets/Luatxt/MainPanel.lua.txt
 - Assets/Luatxt/PlayerParam.lua.txt
-- Assets/Luatxt/PlayerData.lua.txt
 - Assets/Luatxt/ItemData.lua.txt
 Dependencies: []
