@@ -5,9 +5,6 @@ require("InitClass")
 --初始化数据
 --初始化道具表信息
 require("ItemData")
---玩家信息 
-require("PlayerData")
-PlayerData:Init()
 
 require("BasePanel")
 require("MainPanel")
