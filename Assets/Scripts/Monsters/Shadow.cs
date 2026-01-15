@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Shadow : Monster
 {
-    protected override void Initialize()
+protected override void Initialize()
     {
-        maxHealth = GameData.Instance.MonsterHealth * 7f;
-        damage = GameData.Instance.MonsterAttack * 3f;
-        speed = GameData.Instance.MonsterSpeed;
+        speed = GameData.Instance.monsterData.dataDic[4].speed;
+        damage = GameData.Instance.monsterData.dataDic[4].attack;
+        maxHealth = GameData.Instance.monsterData.dataDic[4].health;
     }
 }

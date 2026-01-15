@@ -14301,6 +14301,7 @@ GameObject:
   - component: {fileID: 1123745237451664478}
   - component: {fileID: 1145544693331091340}
   - component: {fileID: 915036195771574528}
+  - component: {fileID: 1785953993389353902}
   m_Layer: 0
   m_Name: MuzzleFlare
   m_TagString: FX
@@ -19191,6 +19192,19 @@ MonoBehaviour:
       m_NumAlphaKeys: 2
   applyChanges: 0
   Keep_applyChanges: 0
+--- !u!114 &1785953993389353902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947086474412415428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fe4d077e2ef024eaa30e0c46cb6524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopTime: 1
 --- !u!1 &947086475858587504
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5598916715513939013}
   - component: {fileID: 5598419669853277195}
   - component: {fileID: 4193665297138175823}
-  - component: {fileID: 2126861756882864206}
+  - component: {fileID: 3455243040339866686}
   m_Layer: 9
   m_Name: Bullet
   m_TagString: FX
@@ -30,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5485423627424368997}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.492, z: 2.998}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
@@ -4961,7 +4961,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2126861756882864206
+--- !u!114 &3455243040339866686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4973,8 +4973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c72cd62bf383b4fbd1ccd88ad00430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  damage: 1
   explosionPrefab: {fileID: 5647994004883081649, guid: 060f38ddfbdd64948b02c15ededd37cf,
     type: 3}
 --- !u!1 &5485801020053094565
