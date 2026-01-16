@@ -5,8 +5,16 @@ using UnityEngine.UI;
 
 public class CountdownTimer : BasePanel<CountdownTimer>
 {
-    public Text countdownText;  // 拖入倒计时 Text 组件
-    private float totalTime = 20f; // 总倒计时时间（秒）
+    private float addLevelTime;
+    private float addMonsterHealth;
+    private float addMonsterAttack;
+    private float addMonsterSpeed;
+    private float maxMonsterSpeed;
+    private float addIntervalTime;
+    private float maxIntervalTime;
+
+    public Text countdownText;
+    private float totalTime; 
     public bool autoStart = false; // 是否自动开始倒计时
     public Text levelText;
     public GameObject ExplosionProp;
@@ -17,8 +25,17 @@ public class CountdownTimer : BasePanel<CountdownTimer>
 
     public override void Init()
     {
-        if (autoStart) 
+        if (autoStart)
             StartCountdown();
+
+        addLevelTime = GameData.Instance.iteratData.dataDic["LevelTime"].value;
+        addMonsterAttack = GameData.Instance.iteratData.dataDic["MonsterAttack"].value;
+        addMonsterHealth = GameData.Instance.iteratData.dataDic["MonsterHealth"].value;
+        addMonsterSpeed = GameData.Instance.iteratData.dataDic["MonsterSpeed"].value;
+        maxMonsterSpeed = GameData.Instance.iteratData.dataDic["MonsterSpeed"].maxValue;
+        addIntervalTime = GameData.Instance.iteratData.dataDic["IntervalTime"].value;
+        maxIntervalTime = GameData.Instance.iteratData.dataDic["IntervalTime"].maxValue;
+        totalTime = 20f; // 总倒计时时间（秒）
     }
 
     // 外部调用启动倒计时
@@ -58,13 +75,8 @@ public class CountdownTimer : BasePanel<CountdownTimer>
     {
         int minutes = Mathf.FloorToInt(time / 60f);
         int seconds = Mathf.FloorToInt(time % 60f);
-        //int milliseconds = Mathf.FloorToInt((time * 1000) % 1000);
-
-        // 格式示例1: "01:23"
+        // 格式: "01:23"
         countdownText.text = $"{minutes:00}:{seconds:00}";
-
-        // 格式示例2: "01:23.456"
-        // countdownText.text = $"{minutes:00}:{seconds:00}.{milliseconds:000}";
     }
 
     void OnCountdownEnd()
@@ -114,13 +126,16 @@ public class CountdownTimer : BasePanel<CountdownTimer>
 
     public void TheNextLevel()
     {
-        totalTime += 10;
+        totalTime += addLevelTime;
         levelText.text = "第 " + ++levelNum + " 层";
-        //if(GameData.Instance.player.BeInjuredIntervalTime > 0.1f)
-        //    GameData.Instance.player.BeInjuredIntervalTime -= 0.025f;//  每层减0.025
-        GameData.Instance.MonsterAttack += 0.5f;
-        GameData.Instance.MonsterHealth += 0.3f;
-        //if(GameData.Instance.MonsterSpeed < 2f)
-        //    GameData.Instance.MonsterSpeed += 0.1f;
+        if (GameData.Instance.player.BeInjuredIntervalTime > maxIntervalTime)
+            GameData.Instance.player.BeInjuredIntervalTime -= addIntervalTime;// 每层减少
+        foreach (var item in GameData.Instance.monsterData.dataDic)
+        {
+            item.Value.attack += addMonsterAttack;
+            item.Value.health += addMonsterHealth;
+            if (item.Value.speed < maxMonsterSpeed)
+                item.Value.speed += addMonsterSpeed;
+        }
     }
 }

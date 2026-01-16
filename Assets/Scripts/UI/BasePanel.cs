@@ -12,7 +12,7 @@ public abstract class BasePanel<T> : MonoBehaviour where T : class
     private static T instance;
 
     public static T Instance => instance;
-
+    public bool isFire = false; // 是否开火
     protected virtual void Awake()
     {
         instance = this as T;
@@ -20,8 +20,6 @@ public abstract class BasePanel<T> : MonoBehaviour where T : class
 
     void Start()
     {
-        //父类当中会去强行调用 初始化方法
-        //该初始化方法 又是一个抽象函数 子类就必须去实现
         Init();
     }
 
@@ -44,11 +42,15 @@ public abstract class BasePanel<T> : MonoBehaviour where T : class
         Cursor.visible = true;
         //鼠标限制在窗口范围内
         Cursor.lockState = CursorLockMode.Confined;
+        isFire = false; 
     }
 
     public void CloseMouse()
     {
         //隐藏鼠标
         Cursor.visible = false;
+        isFire = true;
+        //鼠标锁定在屏幕中心
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

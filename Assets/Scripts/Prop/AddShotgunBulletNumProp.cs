@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class AddShotgunBulletNumProp : Prop
 {
-    public int addNum = 1;
+    public int addNum;
+    private int maxNum;
+    public override void Init()
+    {
+        addNum = (int)GameData.Instance.propData.dataDic[4].value;
+        maxNum = (int)GameData.Instance.propData.dataDic[4].maxValue;
+    }
     public override void TriggerEffect()
     {
-        if(GameData.Instance.player.ShotgunBulletNum <= 8)
+        if (GameData.Instance.player.ShotgunBulletNum <= maxNum)
         {
-            GameData.Instance.player.ShotgunBulletNum += addNum;
             GameUI.Instance.SetBuffHint("霰弹枪的发射子弹提高");
+            GameData.Instance.player.ShotgunBulletNum += addNum;
         }
         else
         {
@@ -19,7 +25,8 @@ public class AddShotgunBulletNumProp : Prop
     }
     public override string BuffHint()
     {
-        if (GameData.Instance.player.ShotgunBulletNum <= 8)
+        Init();
+        if (GameData.Instance.player.ShotgunBulletNum <= maxNum)
         {
             return "霰弹枪的发射子弹提高";
         }
@@ -27,5 +34,9 @@ public class AddShotgunBulletNumProp : Prop
         {
             return "霰弹枪的子弹已经达到最大";
         }
+    }
+    public override int GetID()
+    {
+        return GameData.Instance.propData.dataDic[4].id;
     }
 }

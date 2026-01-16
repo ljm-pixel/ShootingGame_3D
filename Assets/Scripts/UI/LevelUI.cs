@@ -26,7 +26,6 @@ public class LevelUI : BasePanel<LevelUI>
     private void OnEnable()
     {
         OpenMouse();
-
         if (PropSpawner.Instance == null || WeaponSpawner.Instance == null)
             return;
         int length = PropSpawner.Instance.PropPrefabs.Length + WeaponSpawner.Instance.weaponPrefabs.Count;

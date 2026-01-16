@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class Shotgun : Gun
 {
-    private int bulletNum;
+    int fireNum;
     public float bulletAngle = 7.5f;
 
     protected override void Fire()
     {
         interval = 1.5f - (GameData.Instance.player.AttackSpeed * 0.1f);
         //animator.SetTrigger("Shoot");
-        bulletNum = GameData.Instance.player.ShotgunBulletNum;
-        int median = bulletNum / 2;
-        for (int i = 0; i < bulletNum; i++)
+        fireNum = GameData.Instance.player.ShotgunBulletNum;
+        GameObject muzzleFlare = ObjectPool.Instance.GetObject(muzzleFlarePrefab);
+        muzzleFlare.transform.position = bulletPos.position; // 枪口位置
+        muzzleFlare.transform.rotation = bulletPos.rotation; // 枪口位置
+        int median = fireNum / 2;
+        for (int i = 0; i < fireNum; i++)
         {
             GameObject bullet = ObjectPool.Instance.GetObject(bulletPrefab);
             bullet.transform.position = bulletPos.position;
 
-            if (bulletNum % 2 == 1)
+            if (fireNum % 2 == 1)
             {
                 bullet.GetComponent<Bullet>().SetSpeed(Quaternion.AngleAxis(bulletAngle * (i - median), Vector3.up) * bulletPos.forward);
             }

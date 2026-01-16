@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 2090697857
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4f187714d8d297fd734aa11ebb1ad6c9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Luatxt/BagPanel.lua.txt
+- Assets/Luatxt/SplitTools.lua.txt
+- Assets/Luatxt/Object.lua.txt
+- Assets/Luatxt/InitClass.lua.txt
+- Assets/Luatxt/BasePanel.lua.txt
+- Assets/Luatxt/ItemGrid.lua.txt
+- Assets/Luatxt/JsonUtility.lua.txt
+- Assets/Luatxt/Main.lua.txt
+- Assets/Luatxt/MainPanel.lua.txt
+- Assets/Luatxt/PlayerParam.lua.txt
+- Assets/Luatxt/PlayerData.lua.txt
+- Assets/Luatxt/ItemData.lua.txt
+Dependencies: []

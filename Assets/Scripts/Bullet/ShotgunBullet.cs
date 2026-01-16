@@ -6,8 +6,7 @@ public class ShotgunBullet : Bullet
 {
     protected override void OnEnable()
     {
-        base.OnEnable();
-        //speed = 15f + GameData.Instance.player.AttackSpeed;
-        damage = GameData.Instance.player.Attack * 0.15f;
+        fireSpeed = GameData.Instance.weaponData.dataDic[2].fireSpeed;
+        damage = GameData.Instance.player.Attack * GameData.Instance.weaponData.dataDic[2].damage;
     }
 }

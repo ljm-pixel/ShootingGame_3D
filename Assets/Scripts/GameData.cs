@@ -20,44 +20,29 @@ using UnityEngine;
 
 //时间：每层加10秒
 
-public class GameData : MonoBehaviour 
+//音效数据
+
+public class GameData : MonoBehaviour
 {
     private static GameData instance = new GameData();
     public static GameData Instance => instance;
-
-    public GameObject Player;
     public Player player;
-
-    //怪物血量
-    private float monsterHealth = 1f;
-    //怪物伤害
-    private float monsterAttack = 1f;
-    //怪物移速
-    private float monsterSpeed = 1f;
-
-    public float MonsterHealth
-    {
-        get { return monsterHealth; }
-        set { monsterHealth = value; }
-    }
-    public float MonsterAttack
-    {
-        get { return monsterAttack; }
-        set { monsterAttack = value; }
-    }
-    public float MonsterSpeed
-    {
-        get { return monsterSpeed; }
-        set { monsterSpeed = value; }
-    }
+    public Dictionary<int, int> bagItems = new Dictionary<int, int>(); 
+    public PlayerInfoContainer playerData;
+    public MonsterInfoContainer monsterData;
+    public WeaponInfoContainer weaponData;
+    public PropInfoContainer propData;
+    public IteratValueInfoContainer iteratData;
 
     void Awake()
     {
         instance = this;
-        player = Player.GetComponent<Player>();
+        // BinaryDataMgr.Instance.InitData(); //初始化Excel表数据
+        //获取Excel表数据
+        playerData = BinaryDataMgr.Instance.GetTable<PlayerInfoContainer>();
+        monsterData = BinaryDataMgr.Instance.GetTable<MonsterInfoContainer>();
+        weaponData = BinaryDataMgr.Instance.GetTable<WeaponInfoContainer>();
+        propData = BinaryDataMgr.Instance.GetTable<PropInfoContainer>();
+        iteratData = BinaryDataMgr.Instance.GetTable<IteratValueInfoContainer>();
     }
-    //private GameData()
-    //{
-    //    player = Player.GetComponent<Player>();
-    //}
 }
